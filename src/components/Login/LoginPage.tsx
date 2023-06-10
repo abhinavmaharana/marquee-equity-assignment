@@ -1,16 +1,17 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
+import { useHistory } from 'react-router-dom';
 
 const LoginPage: React.FC = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const { login } = useContext(AuthContext);
-    // const history = useHistory();
+    const history = useHistory();
     
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         await login(username, password);
-        // history.push('/dashboard');
+        history.push('/dashboard');
     }
   return (
     <div>
